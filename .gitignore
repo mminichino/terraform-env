@@ -1,0 +1,40 @@
+# Terraform specific ignores
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraformrc
+terraform.rc
+*.tfvars
+*.tfvars.json
+
+# tf lock file
+**/.terraform.lock.hcl
+
+# Terragrunt specific ignores
+.terragrunt-cache/
+
+# OSX trash
+.DS_Store
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.idea/
+.vscode/
+# Kitchen files
+**/inspec.lock
+**.gem
+**/.kitchen
+**/.kitchen.local.yml
+**/Gemfile.lock
+# Plan files
+**/tmp_plan
+**/.tmp
+**/tmp
+*.iml
+
+# .env file
+.env
