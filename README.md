@@ -13,7 +13,7 @@ vi .env
 ```
 
 ```shell
-cd aws/us-east-2/use2-demo-1/rdi
+cd aws/us-east-2/use2-demo-1
 ```
 
 ```shell
