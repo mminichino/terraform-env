@@ -6,7 +6,7 @@ locals {
 
   owner = local.common_vars.locals.owner
 
-  environment = "rdi"
+  environment = "test"
 
   stack = join("-", [
     local.aws_short_region,

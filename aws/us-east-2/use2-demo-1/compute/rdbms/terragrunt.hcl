@@ -8,7 +8,7 @@ locals {
   ec2_role    = local.common_vars.locals.ec2_role
   public_key  = local.common_vars.locals.public_key
 
-  environment  = "client"
+  environment  = "rdbms"
   node_count   = 1
   machine_type = "m5.2xlarge"
 
@@ -19,7 +19,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/client?ref=v1.0.0"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/client?ref=v1.0.3"
 }
 
 include "root" {
@@ -27,7 +27,7 @@ include "root" {
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path = "../../vpc"
 
   mock_outputs = {
     aws_region     = "us-east-2"

@@ -7,7 +7,7 @@ remote_state {
   backend = "s3"
   config = {
     encrypt        = true
-    bucket         = "terraform-state-${get_env("TG_AWS_ACCOUNT_NUMBER", "")}-us-east-2"
+    bucket         = "${get_env("TG_BUCKET_PREFIX", "terragrunt")}-terraform-remote-state"
     key            = "aws/${path_relative_to_include()}/terraform.tfstate"
     region         = local.aws_region
     use_lockfile   = true

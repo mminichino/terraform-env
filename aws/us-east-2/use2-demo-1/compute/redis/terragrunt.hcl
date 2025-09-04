@@ -23,7 +23,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/redis?ref=v1.0.0"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/redis?ref=v1.0.3"
 }
 
 include "root" {
@@ -31,7 +31,7 @@ include "root" {
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path = "../../vpc"
 
   mock_outputs = {
     aws_region     = "us-east-2"

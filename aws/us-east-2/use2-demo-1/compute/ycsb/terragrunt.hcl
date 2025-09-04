@@ -12,8 +12,8 @@ locals {
   domain      = local.common_vars.locals.domain
   admin_user  = local.common_vars.locals.admin_user
 
-  environment  = "redis"
-  node_count   = 3
+  environment  = "ycsb"
+  node_count   = 0
   machine_type = "m5.2xlarge"
 
   name = join("-", [
@@ -23,7 +23,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/redis?ref=v1.0.0"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/redis?ref=v1.0.3"
 }
 
 include "root" {
@@ -31,7 +31,7 @@ include "root" {
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path = "../../vpc"
 
   mock_outputs = {
     aws_region     = "us-east-2"
