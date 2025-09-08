@@ -20,7 +20,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/rdi?ref=v1.0.3"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/rdi?ref=v1.0.5"
 }
 
 include "root" {

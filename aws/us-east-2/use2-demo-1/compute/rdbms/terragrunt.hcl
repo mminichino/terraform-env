@@ -19,7 +19,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/client?ref=v1.0.3"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/rdbms?ref=v1.0.6"
 }
 
 include "root" {
@@ -46,8 +46,8 @@ inputs = {
   aws_vpc_cidr        = dependency.vpc.outputs.vpc_cidr
   aws_vpc_id          = dependency.vpc.outputs.vpc_id
   ec2_instance_role   = local.ec2_role
-  client_count        = local.node_count
+  node_count          = local.node_count
   public_key_file     = local.public_key
-  client_machine_type = local.machine_type
+  machine_type        = local.machine_type
   tags                = local.tags
 }
