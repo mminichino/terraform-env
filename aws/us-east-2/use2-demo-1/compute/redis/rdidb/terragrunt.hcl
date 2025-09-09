@@ -4,7 +4,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/database?ref=v1.0.5"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/database?ref=v1.0.7"
 }
 
 include "root" {
@@ -24,6 +24,11 @@ dependency "redis" {
 }
 
 inputs = {
+  uid              = 3
+  name             = "rdidb"
+  port             = 12003
+  replication      = true
+  memory_size      = 268435456
   password         = dependency.redis.outputs.password
   username         = dependency.redis.outputs.admin_user
   private_key_file = local.private_key
