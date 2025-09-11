@@ -19,7 +19,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/rdbms?ref=v1.0.6"
+  source = "git::git@github.com:mminichino/terraform.git//redis/aws/modules/rdbms?ref=v1.0.9"
 }
 
 include "root" {
@@ -40,6 +40,7 @@ dependency "vpc" {
 }
 
 inputs = {
+  node_count          = 1
   name                = local.name
   aws_region          = dependency.vpc.outputs.aws_region
   aws_subnet_id_list  = dependency.vpc.outputs.subnet_id_list
@@ -49,5 +50,6 @@ inputs = {
   node_count          = local.node_count
   public_key_file     = local.public_key
   machine_type        = local.machine_type
+  image               = "ol"
   tags                = local.tags
 }
