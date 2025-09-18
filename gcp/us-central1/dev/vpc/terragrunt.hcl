@@ -10,7 +10,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/vpc?ref=v1.0.10"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/vpc?ref=v1.0.12"
 }
 
 include {
