@@ -20,3 +20,15 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
 }
+
+generate "provider" {
+  path      = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<-EOF
+        provider "google" {
+          credentials = file("${local.gcp_credential_file}")
+          project     = "${local.gcp_project}"
+          region      = "${local.gcp_region}"
+        }
+      EOF
+}

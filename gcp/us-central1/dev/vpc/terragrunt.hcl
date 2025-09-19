@@ -10,7 +10,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/vpc?ref=v1.0.12"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/vpc?ref=v1.0.22"
 }
 
 include {
@@ -22,6 +22,5 @@ inputs = {
   gcp_region       = local.gcp_region
   gcp_project_id   = local.gcp_project
   cidr_block       = "10.55.0.0/16"
-  credential_file  = local.gcp_credential_file
   tags             = local.tags
 }

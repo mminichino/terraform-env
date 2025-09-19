@@ -16,7 +16,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/gke?ref=v1.0.13"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/gke?ref=v1.0.22"
 }
 
 include "root" {
@@ -24,7 +24,7 @@ include "root" {
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path = "../../vpc"
 
   mock_outputs = {
     subnet_name = "usz1-mock-subnet"
@@ -36,7 +36,6 @@ dependency "vpc" {
 
 inputs = {
   name            = local.stack
-  credential_file = local.gcp_credential_file
   gcp_project_id  = local.gcp_project
   gcp_region      = local.gcp_region
   node_count      = local.node_count
