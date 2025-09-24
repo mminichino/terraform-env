@@ -1,5 +1,6 @@
 locals {
-  owner       = get_env("LOGNAME", "sa")
+  username    = get_env("LOGNAME", "sa")
+  owner       = join("_", split(".", local.username))
   public_key  = get_env("TG_PUBLIC_KEY_FILE", "id_rsa.pub")
   private_key = get_env("TG_PRIVATE_KEY_FILE", "id_rsa")
   ec2_role    = get_env("TG_EC2_INSTANCE_PROFILE", "S3FullAccess")

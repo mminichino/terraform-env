@@ -3,7 +3,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/redb?ref=v1.0.22"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/redb?ref=v1.0.25"
 }
 
 include "gke" {
@@ -25,7 +25,8 @@ dependency "rec" {
   config_path = "../../rec"
 
   mock_outputs = {
-    cluster = "redis-enterprise-cluster"
+    namespace = "redis"
+    cluster   = "redis-enterprise-cluster"
   }
 
   mock_outputs_allowed_terraform_commands = ["validate", "init", "plan"]
@@ -35,5 +36,6 @@ inputs = {
   name             = local.name
   domain_name      = dependency.gke_env.outputs.gke_domain_name
   nginx_ingress_ip = dependency.gke_env.outputs.nginx_ingress_ip
+  namespace        = dependency.rec.outputs.namespace
   cluster          = dependency.rec.outputs.cluster
 }

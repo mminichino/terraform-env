@@ -16,7 +16,7 @@ locals {
 }
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/gke?ref=v1.0.22"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/gke?ref=v1.0.26"
 }
 
 include "root" {

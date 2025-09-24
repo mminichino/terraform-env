@@ -1,7 +1,7 @@
 #
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/rec?ref=v1.0.22"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/rec?ref=v1.0.25"
 }
 
 include "gke" {
@@ -19,7 +19,18 @@ dependency "gke_env" {
   mock_outputs_allowed_terraform_commands = ["validate", "init", "plan"]
 }
 
+dependency "operator" {
+  config_path = "../../operator"
+
+  mock_outputs = {
+    namespace = "redis"
+  }
+
+  mock_outputs_allowed_terraform_commands = ["validate", "init", "plan"]
+}
+
 inputs = {
+  namespace     = dependency.operator.outputs.namespace
   domain_name   = dependency.gke_env.outputs.gke_domain_name
   storage_class = dependency.gke_env.outputs.gke_storage_class
 }
