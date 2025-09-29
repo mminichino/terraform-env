@@ -1,7 +1,9 @@
-#
+locals {
+  service_type = "nginx"
+}
 
 terraform {
-  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/rec?ref=v1.0.25"
+  source = "git::git@github.com:mminichino/terraform.git//redis/gcp/modules/rec?ref=v1.0.30"
 }
 
 include "gke" {
@@ -33,4 +35,5 @@ inputs = {
   namespace     = dependency.operator.outputs.namespace
   domain_name   = dependency.gke_env.outputs.gke_domain_name
   storage_class = dependency.gke_env.outputs.gke_storage_class
+  service_type  = local.service_type
 }
